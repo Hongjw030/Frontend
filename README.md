@@ -8,7 +8,7 @@ html, css, js 공부 > 프레임워크 활용 > http 등 인터넷의 기본 구
 https://opentutorials.org/course/3083
 
 ## 목차
-1. html
+1. html (html.md)
 2. css
 3. js
   * 리엑트
