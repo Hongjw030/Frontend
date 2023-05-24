@@ -9,7 +9,7 @@ https://opentutorials.org/course/3083
 
 ## 목차
 1. [html](https://github.com/hongjaewonP/Frontend/blob/main/HTML.md)
-2. css
+2. [css](https://github.com/hongjaewonP/Frontend/blob/main/CSS.md)
 3. js
   * 리엑트
   * ajax
