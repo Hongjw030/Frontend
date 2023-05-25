@@ -54,3 +54,13 @@ var numb = 1;
 ```
 
 ## 4. 반복문
+```ex.js
+<script>
+  var i = 0;
+  var coworkers = ["hellen", "john", "nana", "lisa"];
+  while(i<coworkers.length){
+    document.write('<a href="http://www.naver.com/'+coworkers[i]+'">' + coworkers[i] + '</a>' + "<br>");
+    i=i+1;
+  }
+</script>
+```
