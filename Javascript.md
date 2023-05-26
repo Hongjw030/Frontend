@@ -64,3 +64,33 @@ var numb = 1;
   }
 </script>
 ```
+
+## 함수
+```ex.js
+<!doctype html>
+
+<html>
+    <head>
+        <title>my web function ex</title>
+        <meta charset="utf-8">     
+        <script>
+            function two(self){
+                document.write("hi!<br>");
+            }
+            function add(a, b){
+                return (a+b+"<br>");
+            }
+        </script>   
+    </head>
+
+    <body>
+        <h1>함수 예제</h1>
+        <script>
+            two();
+            two();
+            document.write(add(2,3));
+            document.write(add("hi", "hello"));
+        </script>
+    </body>
+</html>
+```
