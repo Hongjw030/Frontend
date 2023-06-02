@@ -54,6 +54,7 @@ var numb = 1;
 ```
 
 ## 4. 반복문
+iterator로 검색하자.
 ```ex.js
 <script>
   var i = 0;
@@ -65,32 +66,91 @@ var numb = 1;
 </script>
 ```
 
-## 함수
+## 5. 함수
+객체를 가지고 함수를 만드는 방법. 
+중복된 기능을 하나의 함수로 묶는 것은 매우 중요하다!! 함수의 매개 변수를 잘 이해하고, this 와 같은 키워드를 사용해 함수를 구현하자.
 ```ex.js
 <!doctype html>
-
 <html>
     <head>
-        <title>my web function ex</title>
-        <meta charset="utf-8">     
-        <script>
-            function two(self){
-                document.write("hi!<br>");
-            }
-            function add(a, b){
-                return (a+b+"<br>");
-            }
-        </script>   
+        <title>object</title>
+        <meta charset="utf-8">
     </head>
 
     <body>
-        <h1>함수 예제</h1>
+        <h1>객체 object</h1>
+        <h2>속성 생성하기 create</h2>
         <script>
-            two();
-            two();
-            document.write(add(2,3));
-            document.write(add("hi", "hello"));
+            var coworkers = {
+                "programmer" : "hellen",
+                "designer" : "john",
+                "client" : "lisa"
+            };
+            document.write("programder : " + coworkers.programmer + "<br>");
+            document.bookkeeper = "maria";
+            coworkers["scientist"] = "elsa"
+            document.write("scientist : " + coworkers.scientist + "<br>");        
         </script>
+
+        <h2>모두 출력하기 iterator</h2>
+        <script>
+            for(var key in coworkers){
+                document.write(key + " : " + coworkers[key] + "<br>");
+            }
+        </script>
+
+        <h2>함수 구현하기 function</h2>
+        <script>
+            coworkers.showAll = function(){
+                for(var key in this){
+                    document.write(this[key] + " : " + coworkers[key] + "<br>");
+                }
+            }
+            coworkers.showAll();
+        </script>
+
     </body>
 </html>
 ```
+
+실제로 써먹는다면?
+```ex.js
+var Links = {
+    setColor:function(color){
+        var alist = document.querySelectorAll('a');
+    var i = 0;
+        while(i<alist.length){
+            alist[i].style.color = color;
+            i=i+1;
+        }
+    } 
+}
+var Body = {
+    setColor:function (color){
+        document.querySelector('body').style.color = color;
+    },
+    setBackgroundColor:function (color){
+        document.querySelector('body').style.backgroundColor = color;
+    }
+}
+
+function nightDayHandler(self){
+    var target = document.querySelector('body');
+    if(self.value=='fornight'){
+        Body.setColor('white');
+        Body.setBackgroundColor('black');
+        self.value='forday';
+        Links.setColor('powderblue');
+
+    }
+    else{
+        Body.setColor('black');
+        Body.setBackgroundColor('white');
+        self.value='fornight';
+        Links.setColor('green');
+    }
+}
+```
+
+## 6. 라이브러리와 프레임워크
+
