@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>object</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <h1>객체 object</h1>
+        <h2>속성 생성하기 create</h2>
+        <script>
+            var coworkers = {
+                "programmer" : "hellen",
+                "designer" : "john",
+                "client" : "lisa"
+            };
+            document.write("programder : " + coworkers.programmer + "<br>");
+            document.bookkeeper = "maria";
+            coworkers["scientist"] = "elsa"
+            document.write("scientist : " + coworkers.scientist + "<br>");        
+        </script>
+
+        <h2>모두 출력하기 iterator</h2>
+        <script>
+            for(var key in coworkers){
+                document.write(key + " : " + coworkers[key] + "<br>");
+            }
+        </script>
+
+        <h2>함수 구현하기 function</h2>
+        <script>
+            coworkers.showAll = function(){
+                for(var key in this){
+                    document.write(this[key] + " : " + coworkers[key] + "<br>");
+                }
+            }
+            coworkers.showAll();
+        </script>
+
+    </body>
+</html>
