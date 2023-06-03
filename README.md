@@ -8,20 +8,26 @@ html, css, js 공부 > 프레임워크 활용 > http 등 인터넷의 기본 구
 https://opentutorials.org/course/3083
 
 ## 목차
-1. [html](https://github.com/hongjaewonP/Frontend/blob/main/HTML.md)
-2. [css](https://github.com/hongjaewonP/Frontend/blob/main/CSS.md)
-3. [js](https://github.com/hongjaewonP/Frontend/tree/main/Javascript.md)
-  * 리엑트
+### 1-1. [html](https://github.com/hongjaewonP/Frontend/blob/main/HTML.md)
+### 2. [css](https://github.com/hongjaewonP/Frontend/blob/main/CSS.md)
+### 3. [js](https://github.com/hongjaewonP/Frontend/tree/main/Javascript.md)
+  * [리엑트](https://github.com/hongjaewonP/Frontend/blob/main/React.md)
   * ajax
   * p5 
-4. http 기초 내용
-5. Node js
+### 4. MySQL
+### 5-1. Node js
   * MySQL
   * express.js
-  * 쿠키 사용하기
-  * 세션 인증하기
-  * passport
-6. php
-7. home server
-8. DNS
-9. Oauth
+### 6. 파이썬
+### 7. Django
+### 8. PHP
+  * php와 mySQL
+### 9. Home server
+### 10. DNS
+### 11. HTTP
+### 5-2. Node js
+  * 쿠키와 인증
+  * 세션과 인증
+  * passport.js
+### 1-2. Oauth
+  * 페이스북, 구글 로그인
