@@ -107,6 +107,71 @@ export default App;
   
 ## 4. props
 
+이렇게 우리가 만든 컴포넌트에도, 디자인 속성을 부여할 수 있다. 함수에 매개변수 props를 주는 방식으로 구현하면 된다!!
+```App.js
+// 매개변수가 없는 기초적인 컴포넌트
+<Header></Header>
+
+//매개변수가 있는 컴포넌트
+//title, body 등 사용자가 지정한 변수를 통해 매개변수를 넘겨준다.
+<Header title="매개변수 값"></Header>
+<Article title="매개변수1" body="매개변수2"></Header>
+```
+
+매개변수를 받는 함수의 구조는 다음과 같다
+```App.js
+//props 라는 이름의 매개변수를 받는다
+//이 매개변수는 문자열도, 숫자형도 아닌 object 형이다.
+//따라서 props.title 속성으로 문자열을 받아와야 한다!!
+
+function Header(props){
+  return <header>
+    <h1><a href="/">{props.title}</a></h1>
+  </header>
+}
+```
+
+전체 코드
+```App.js
+import logo from './logo.svg';
+import './App.css';
+function Header(props){
+  return <header>
+    <h1><a href="/">{props.title}</a></h1>
+  </header>
+}
+function Nav(){
+  return <nav>
+    <ol>
+      <li><a href="/read/1">html</a></li>
+      <li><a href="/read/2">css</a></li>
+      <li><a href="/read/3">javascript</a></li>          
+    </ol>
+  </nav>
+}
+function Article(props){
+  return <article>
+    <h2>{props.title}</h2>
+    {props.body}
+  </article>
+}
+
+function App() {
+  return (
+    <div>
+      <Header title="REACT"></Header>
+      <Nav></Nav>
+      <Article title="Welcome!" body="hello, WEB."></Article>
+      <Article title="Hi!" body="hello, REACT."></Article>
+    </div>
+  );
+}
+
+export default App;
+```
+
+  4분부터 다시 시작...
+  
 ## 5. 이벤트
 
 ## 6. 생성 기능 구현
