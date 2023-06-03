@@ -37,8 +37,72 @@ App.js 파일에서 배운 html 태그를 통해 입력하면 그 내용 그대�
 
 
 ## 3. 컴포넌트 만들기
+: 리액트는 사용자 정의 태그를 만드는 것이다
+그렇다면 어떻게 태그를 만들까?
 
-가나다
+태그를 만드는 방법은
+1. class를 활용
+2. function을 활용
+이 두 가지 방법이 있는데, 여기서는 함수만을 활용할 것!!
+
+기본적인 App.js 전문
+```App.js
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  return (
+    <div>
+      <header>
+        <h1><a href="/">WEB</a></h1>
+      </header>
+      <nav>
+        <ol>
+          <li><a href="/read/1">html</a></li>
+          <li><a href="/read/2">css</a></li>
+          <li><a href="/read/3">javascript</a></li>          
+        </ol>
+      </nav>
+    </div>
+  );
+}
+
+export default App;
+```
+
+만약 이 파트를 모든 수십개의 사이트에 적용하려면, 하나의 함수로 묶어 해당 html들에 함수를 적용시키기만 하면 된다.
+
+```App.js
+//함수 적용
+
+import logo from './logo.svg';
+import './App.css';
+function Header(){
+  return <header>
+    <h1><a href="/">WEB</a></h1>
+  </header>
+}
+
+function App() {
+  return (
+    <div>
+      <Header></Header>
+      <nav>
+        <ol>
+          <li><a href="/read/1">html</a></li>
+          <li><a href="/read/2">css</a></li>
+          <li><a href="/read/3">javascript</a></li>          
+        </ol>
+      </nav>
+    </div>
+  );
+}
+
+export default App;
+```
+
+함수를 만들 때 주의할 점. 이름을 무조건 대문자로 시작하게 짓자. 
+이렇게 만든 사용자 정의 태그를 <b>컴포넌트</b> 라고 한다
   
   
 ## 4. props
