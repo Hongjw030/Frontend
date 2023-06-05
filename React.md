@@ -170,7 +170,6 @@ function App() {
 export default App;
 ```
 
-  4분부터 다시 시작...
   
 ## 5. 이벤트
 
