@@ -170,9 +170,65 @@ function App() {
 
 export default App;
 ```
-5/10 4분부터 시작   
-  
-  
+
+이번에는 props 여러 개를 array 안에 저장해 쓰는 형식을 구현해보자. 
+이 때 array 내부 값은 변하지 않기 때문에 const 로 지정해주면 코드가 더 튼튼해진다!!
+const를 적재적소에 쓰는 것도 중요함.
+
+```ex.js
+import logo from './logo.svg';
+import './App.css';
+
+function Header(props){
+  return <header>
+  <h1><a href="/">{props.title}</a></h1>
+</header>
+}
+
+function Nav(props){
+  const lis =[]
+  for(let i=0;i<props.topics.length;i++){
+    let t=props.topics[i];
+    lis.push(<li key={t.id}><a href={'/read/' + t.id}>{t.title}</a></li>)
+  }
+
+  return <nav>
+  <ol>
+    {lis}
+  </ol>
+</nav>
+}
+
+function Article(props){
+  return <article>
+  <h2>{props.title}</h2>
+  {props.body}
+</article>
+}
+
+function App() {
+  const topics =[
+    {id:1, title:'html', body:'html is ...'},
+    {id:2, title:'css', body:'css is ...'},
+    {id:3, title:'js', body:'js is ...'}
+  ]
+  return (
+    <div>
+      <Header title="REACT"></Header>
+      <Nav topics={topics}></Nav>
+      <Article title="Welcome" body="hello, web!!"></Article>
+      
+    </div>
+  );
+}
+
+export default App;
+
+```
+nav 안에 여러 개의 정보를 담아야 하므로 topics라는 변수를 만들어 정보값을 담는다.
+topics 내 값들은 서로 고유한 값이기 때문에, 각자 id를 부여해야 한다. 
+function 내부에서 for문을 통해 각 <li> 태그에 아이디 값을 부여하고, 링크를 걸어준다.
+
 ## 5. 이벤트 (6,7)
 
 ## 6. 생성 기능 구현 (8)
