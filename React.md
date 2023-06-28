@@ -288,11 +288,16 @@ function Nav(props){
 또한 함수에 넣는 값으로 props 뿐만 아니라 state가 있다.
 props는 함수에 넣고 조작한다 해서 값이 바뀌지 않는다.
 단, state 는 함수에 넣고 조작하면 그대로 값이 바뀐다. 
-굳이 비유를 하자면, 정수 a b의 자리를 바꾸는 temp() 함수가 있다고 할 때 함수에 냅다 변수를 넣는다해서 바뀌지 않는 게 props
-함수에 주솟값을 통해 값을 완전히 변화시키는 게 state (맞는 비유는 아님. 그냥 함수에 넣었을 때 그대로 값이 바뀌냐 마냐의 차이를 보이기 위함.)
+굳이 비유를 하자면, props는 final 키워드를 붙인 변수. state는 그냥 변수이다.
 
 예를 들어 클릭한 링크마다 각각 다른 내용을 보여주게 만들고 싶다면?
 -> 변수 a = 링크의 아이디로 설정하고, if 문을 통해 각각 다른 내용을 보여주자.
+
+ state 쓰는 법.
+ const [para, setPara] = useState("초깃값");
+ const [para1, setPara1] = useState(null);
+ const [para2, setPara2] = useState([{id:1, name:'hellen'}, {id:2, name:'mike'}]);
+여기서 para는 읽는 변수, 실제로 값을 조작하고 변경하는 건 setPara이다.  
 
 ```ex.js
 import logo from './logo.svg';
@@ -373,7 +378,70 @@ export default App;
 
 ```
 
-## 6. 생성 기능 구현 (8)
+## 6. 생성 기능 구현
+![image](https://github.com/hongjaewonP/Frontend/assets/89698149/72819295-a984-4af7-a839-9c87e0378b2b)
+![image](https://github.com/hongjaewonP/Frontend/assets/89698149/31ab94ee-fa62-482a-8bd2-be4358d3200f)
+
+create link 를 누르면 create form이 생김.
+form에 title, body를 입력하고 버튼을 누르면
+nav에 새로운 글 목록이 추가되고 해당 글링크로 이동.
+
+1. 먼저 create link를 만든다. 링크를 클릭하면 create mode로 가게 한다.
+```ex.js
+<a href="/create" onClick={event=>{
+        event.preventDefault();
+        setMode('CREATE');
+      }}>Create link</a>
+```
+
+2. mode가 CREATE일 경우를 위해 Create 태그를 만든다. 이 태그엔 함수 onCreate를 두고, 함수의 파라미터로 _title, _body를 둘 것이다.
+```ex.js
+content = <Create onCreate={(_title, _body)=>{
+  ...
+}></Create>
+```
+
+3. Create 태그를 만든다.
+form에 onSubmit 함수를 붙이고 파라미터로 event를 넘겨준다. 
+event 객체의 title 값, body 값을 따와서 호출하는 객체 props의 함수 onCreate를 불러온다. 
+```ex.js
+function Create(props){
+  return <article>
+    <h2>Create mode</h2>
+
+    <form onSubmit={event=>{
+      event.preventDefault();
+      const title = event.target.title.value;
+      const body = event.target.body.value;
+      props.onCreate(title, body);
+    }}>
+      <p><input type="text" name="title" placeholder="title"/></p>
+      <p><textarea name="body" placeholder="body"></textarea></p>
+      <p><input type="submit" value="Create"></input></p>
+    </form>
+  </article>
+}
+```
+
+4. setMode === 'CREATE' 일 때,
+onCreate 함수가 실행되면 받아온 title, body 값과 미리 만들어둔 nextId값을 통해 배열 topics 내부 값을 업데이트한다.
+
+그 후, 내가 쓴 글 페이지로 자동 이동되게끔, setMode를 READ로 바꾸고 id와 nextId를 1씩 증가시킨다.
+
+```ex.js
+  }else if (mode==='CREATE'){
+    content = <Create onCreate={(_title, _body)=>{
+      const newTopic = {id:nextId, title:_title, body:_body};
+      const newTopics = [...topics]
+      newTopics.push(newTopic);
+      setTopics(newTopics);
+      setMode('READ');
+      setId(nextId);
+      setNextId(nextId+1);
+    }}></Create>
+  }
+```
+
 
 ## 7. 수정 기능 구현 (9)
 
