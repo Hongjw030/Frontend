@@ -379,8 +379,6 @@ export default App;
 ```
 
 ## 6. 생성 기능 구현
-![image](https://github.com/hongjaewonP/Frontend/assets/89698149/72819295-a984-4af7-a839-9c87e0378b2b)
-![image](https://github.com/hongjaewonP/Frontend/assets/89698149/31ab94ee-fa62-482a-8bd2-be4358d3200f)
 
 create link 를 누르면 create form이 생김.
 form에 title, body를 입력하고 버튼을 누르면
