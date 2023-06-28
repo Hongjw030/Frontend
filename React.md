@@ -229,7 +229,7 @@ nav 안에 여러 개의 정보를 담아야 하므로 topics라는 변수를 �
 topics 내 값들은 서로 고유한 값이기 때문에, 각자 id를 부여해야 한다. 
 function 내부에서 for문을 통해 각 <li> 태그에 아이디 값을 부여하고, 링크를 걸어준다.
 
-## 5. 이벤트 (6,7)
+## 5. 이벤트
 
 우리가 버튼을 클릭하거나 타이핑을 할 때 컴퓨터가 그에 대응하게 만드는 것이 필요하다. 
 간단하게 링크를 클릭하면 alert 창이 나오는 함수를 구현해보자.
@@ -285,9 +285,26 @@ function Nav(props){
       }}></Nav>
 ```
 
+또한 함수에 넣는 값으로 props 뿐만 아니라 state가 있다.
+props는 함수에 넣고 조작한다 해서 값이 바뀌지 않는다.
+단, state 는 함수에 넣고 조작하면 그대로 값이 바뀐다. 
+굳이 비유를 하자면, 정수 a b의 자리를 바꾸는 temp() 함수가 있다고 할 때 함수에 냅다 변수를 넣는다해서 바뀌지 않는 게 props
+함수에 주솟값을 통해 값을 완전히 변화시키는 게 state (맞는 비유는 아님. 그냥 함수에 넣었을 때 그대로 값이 바뀌냐 마냐의 차이를 보이기 위함.)
+
+예를 들어 클릭한 링크마다 각각 다른 내용을 보여주게 만들고 싶다면?
+-> 변수 a = 링크의 아이디로 설정하고, if 문을 통해 각각 다른 내용을 보여주자.
 
 ```ex.js
-//전체 코드
+import logo from './logo.svg';
+import './App.css';
+import { useState } from 'react';
+
+function Article(props){
+  return <article>
+  <h2>{props.title}</h2>
+  {props.body}
+</article>
+}
 
 function Header(props){
   return <header>
@@ -304,7 +321,7 @@ function Nav(props){
     let t=props.topics[i];
     lis.push(<li key={t.id}><a id={t.id} href={'/read/' + t.id} onClick={(event)=>{
       event.preventDefault();
-      props.onChangeMode(event.target.id);
+      props.onChangeMode(Number(event.target.id));
     }}>{t.title}</a></li>)
   }
   
@@ -316,24 +333,43 @@ function Nav(props){
 }
 
 function App() {
+  const[mode, setMode] = useState('WELCOME');
+  const [id, setId] = useState(null);
   const topics =[
     {id:1, title:'html', body:'html is ...'},
     {id:2, title:'css', body:'css is ...'},
     {id:3, title:'js', body:'js is ...'}
   ]
+  let content = null;
+  if (mode === 'WELCOME'){
+    content = <Article title = "Welcome" body = "Hello, WEB"></Article>
+  }else if (mode === 'READ'){
+    let title, body = null;
+    for(let i =0;i<topics.length;i++){
+      if (topics[i].id === id){
+        title = topics[i].title;
+        body = topics[i].body;
+      }
+    }
+    content = <Article title = {title} body = {body}></Article>
+  }
+
   return (
     <div>
       <Header title="REACT" onChangeMode={()=>{
-        alert('header!!');
+        setMode('WELCOME');
       }}></Header>
-      <Nav topics={topics} onChangeMode={(id)=>{
-        alert(id);
+      <Nav topics={topics} onChangeMode={(_id)=>{
+        setMode('READ');
+        setId(_id);
       }}></Nav>
-      <Article title="Welcome" body="hello, web!!"></Article>
+      {content}
       
     </div>
   );
 }
+
+export default App;
 
 ```
 
