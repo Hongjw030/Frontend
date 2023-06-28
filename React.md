@@ -231,6 +231,112 @@ function 내부에서 for문을 통해 각 <li> 태그에 아이디 값을 부�
 
 ## 5. 이벤트 (6,7)
 
+우리가 버튼을 클릭하거나 타이핑을 할 때 컴퓨터가 그에 대응하게 만드는 것이 필요하다. 
+간단하게 링크를 클릭하면 alert 창이 나오는 함수를 구현해보자.
+
+1. 먼저 함수에 파라미터가 없는 경우
+header 링크를 클릭하면 alert 창으로 문구가 뜨게 하자. 컴포넌트 내부에 onChangeMode 라는 속성으로 함수를 전달한다.
+```ex.js
+<Header title="REACT"
+  onChangeMode={()=>{alert('header!!');}}>
+</Header>
+```
+
+전달 받은 함수를 링크 태그가 받아서 구현한다.
+```ex.js
+function Header(props){
+  return <header>
+  <h1>
+    <a href="/"
+      onClick={(event)=>{
+        event.preventDefault();
+        props.onChangeMode();
+      }}>{props.title}
+    </a>
+  </h1>
+</header>
+}
+```
+
+2. 함수에 파라미터가 있는 경우.
+   파라미터는 따옴표로 여러 개 넣을 수 있다.
+```ex.js
+function Nav(props){
+  const lis =[]
+  for(let i=0;i<props.topics.length;i++){
+    let t=props.topics[i];
+    lis.push(<li key={t.id}><a id={t.id} href={'/read/' + t.id} onClick={(event)=>{
+      event.preventDefault();
+      props.onChangeMode(event.target.id);
+    }}>{t.title}</a></li>)
+  }
+  
+  return <nav>
+  <ol>
+    {lis}
+  </ol>
+</nav>
+}
+
+...
+
+      <Nav topics={topics} onChangeMode={(id)=>{
+        alert(id);
+      }}></Nav>
+```
+
+
+```ex.js
+//전체 코드
+
+function Header(props){
+  return <header>
+  <h1><a href="/" onClick={(event)=>{
+    event.preventDefault();
+    props.onChangeMode();
+  }}>{props.title}</a></h1>
+</header>
+}
+
+function Nav(props){
+  const lis =[]
+  for(let i=0;i<props.topics.length;i++){
+    let t=props.topics[i];
+    lis.push(<li key={t.id}><a id={t.id} href={'/read/' + t.id} onClick={(event)=>{
+      event.preventDefault();
+      props.onChangeMode(event.target.id);
+    }}>{t.title}</a></li>)
+  }
+  
+  return <nav>
+  <ol>
+    {lis}
+  </ol>
+</nav>
+}
+
+function App() {
+  const topics =[
+    {id:1, title:'html', body:'html is ...'},
+    {id:2, title:'css', body:'css is ...'},
+    {id:3, title:'js', body:'js is ...'}
+  ]
+  return (
+    <div>
+      <Header title="REACT" onChangeMode={()=>{
+        alert('header!!');
+      }}></Header>
+      <Nav topics={topics} onChangeMode={(id)=>{
+        alert(id);
+      }}></Nav>
+      <Article title="Welcome" body="hello, web!!"></Article>
+      
+    </div>
+  );
+}
+
+```
+
 ## 6. 생성 기능 구현 (8)
 
 ## 7. 수정 기능 구현 (9)
