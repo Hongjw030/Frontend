@@ -8,3 +8,4 @@
 
 * Ajax는 서버와 통신해야 하므로 서버를 열고 연결해줘야 한다.
 * 여기서는 github를 통해 웹 호스팅을 하겠다.
+https://hongjw030.github.io/my-Ajaxweb/
