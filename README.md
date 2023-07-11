@@ -5,13 +5,15 @@ html, css, js 공부 > 프레임워크 활용 > http 등 인터넷의 기본 구
 
 ## 참고 자료
 https://opentutorials.org/course/3083
+![image](https://github.com/hongjaewonP/Frontend/assets/89698149/30ce858d-da69-46ec-bda7-da3a989d5cd2)
+
 
 ## 목차
 ### 1-1. [html](https://github.com/hongjaewonP/Frontend/blob/main/HTML.md)
 ### 2. [css](https://github.com/hongjaewonP/Frontend/blob/main/CSS.md)
 ### 3. [js](https://github.com/hongjaewonP/Frontend/tree/main/Javascript.md)
   * [리엑트](https://github.com/hongjaewonP/Frontend/blob/main/React.md)
-  * [ajax](https://github.com/hongjaewonP/Frontend/tree/main)
+  * [ajax](https://github.com/hongjaewonP/Frontend/blob/main/Ajax.md)
   * [p5](https://github.com/hongjaewonP/Frontend/blob/main/p5.md) 
 ### 4. MySQL
 ### 5-1. Node js
